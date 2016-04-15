@@ -14,8 +14,12 @@
 
         <h2>Tasks</h2>
 
-        <ul class="list-group">
-          <li class="list-group-item" ng-repeat="todo in todoList.todos">@{{todo.name}}</li>
+        <input type="text" class="form-control" placeholder="Search" ng-model="todoList.search">
+
+        <br>
+
+        <ul class="list-unstyled">
+          <li ng-repeat="todo in todoList.todos | filter:todoList.search | orderBy:'name'"> @{{todo.name}}</li>
         </ul>
 
         <form class="form-inline" ng-submit="todoList.addTodo()">
